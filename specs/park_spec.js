@@ -32,7 +32,7 @@ describe('Park', function() {
   it('should be able to add a dinosaur to its collection', function() {
     park.addDino(dino1);
     const actual = park.dinosaurs[0]
-    assert.strictEqual(actual, dino1)
+    assert.deepStrictEqual(actual, dino1)
   });
 
   // Help/Advice needed here. When removing middle elements, an extra comma between array elements stops the test from passing?
@@ -57,8 +57,8 @@ describe('Park', function() {
   it('should be able to find all dinosaurs of a particular species', function() {
     park.addDino(dino1);
     park.addDino(dino2);
-    const actual = park.findDino('T-Rex');
-    assert.deepStrictEqual(actual, [dino1])
+    const actual = park.findDino('T-Rex')[0];
+    assert.strictEqual(actual, dino1)
   });
 
   it('should be able to calculate the total number of visitors per day', function() {
@@ -83,6 +83,16 @@ describe('Park', function() {
     park.addDino(dino3);
     const actual = park.findYearlyRevenue();
     assert.strictEqual(actual, 54750000);
+  });
+
+  it('should be able to remove all dinosaurs of a given species', function() {
+    park.addDino(dino1);
+    park.addDino(dino1);
+    park.addDino(dino3);
+    park.addDino(dino1);
+    park.removeAllOfSpecies('T-Rex');
+    const actual = park.dinosaurs;
+    assert.deepStrictEqual(actual, [dino3])
   });
 
 });

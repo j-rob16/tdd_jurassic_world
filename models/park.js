@@ -55,6 +55,14 @@ Park.prototype.findYearlyVisitors = function() {
 Park.prototype.findYearlyRevenue = function() {
   const oneYear = this.findYearlyVisitors();
   return oneYear * this.price;
+};
+
+Park.prototype.removeAllOfSpecies = function(species) {
+  for (let i = this.dinosaurs.length-1; i >= 0; i--) {
+    if (this.dinosaurs[i].species === species) {
+      this.dinosaurs.splice(i, 1);
+    }
+  }
 }
 
 module.exports = Park;
