@@ -11,7 +11,7 @@ describe('Park', function() {
     park = new Park('Jurrasic Park', 50);
     dino1 = new Dinosaur('T-Rex', 'carnivore', 1400);
     dino2 = new Dinosaur('Pterodactyl', 'carnivore', 600);
-    dino3 = new Dinosaur('Triceratops', 'herbavore', 1000);
+    dino3 = new Dinosaur('Triceratops', 'herbivore', 1000);
   })
 
   it('should have a name', function() {
@@ -94,5 +94,20 @@ describe('Park', function() {
     const actual = park.dinosaurs;
     assert.deepStrictEqual(actual, [dino3])
   });
+
+  it('should provide an object with all the diet types of dinosaurs in the park', function() {
+    park.addDino(dino1);
+    park.addDino(dino2);
+    park.addDino(dino3);
+    park.addDino(dino1);
+    park.addDino(dino1);
+    park.addDino(dino3);
+    const actual = park.getDietObject();
+    assert.deepStrictEqual(actual, {
+      carnivore: 4,
+      herbivore: 2,
+      omnivore: 0
+    });
+  })
 
 });

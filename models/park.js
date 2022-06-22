@@ -63,6 +63,25 @@ Park.prototype.removeAllOfSpecies = function(species) {
       this.dinosaurs.splice(i, 1);
     }
   }
-}
+};
+
+Park.prototype.getDietObject = function() {
+  let dietTemplate = {
+    carnivore: 0,
+    herbivore: 0,
+    omnivore: 0
+  };
+  for (let i = 0; i < this.dinosaurs.length; i++) {
+    let dinosaurDiet = this.dinosaurs[i].diet;
+    if (dinosaurDiet === 'carnivore') {
+      dietTemplate.carnivore += 1;
+    } else if (dinosaurDiet === 'herbivore') {
+      dietTemplate.herbivore += 1;
+    } else if (dinosaurDiet === 'omnivore') {
+      dietTemplate.omnivore += 1;
+    }
+  }
+  return dietTemplate;
+};
 
 module.exports = Park;
