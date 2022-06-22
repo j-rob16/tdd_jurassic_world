@@ -66,7 +66,7 @@ Park.prototype.removeAllOfSpecies = function(species) {
 };
 
 Park.prototype.getDietObject = function() {
-  let dietTemplate = {
+  const dietTemplate = {
     carnivore: 0,
     herbivore: 0,
     omnivore: 0
